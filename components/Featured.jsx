@@ -66,7 +66,7 @@ const Featured = ({ autoSlide }) => {
             </div>
             <div className="flex-1 text-lg">
               <h1 className="text-5xl font-bold">{shoe.name}</h1>
-              <p className="tracking-wider mt-10 mb-10 mr-40 ">{shoe.desc}</p>
+              <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
               <button className="border border-black p-2 hover:bg-black hover:text-white">
                 <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
               </button>
