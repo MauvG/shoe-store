@@ -70,7 +70,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
               <div className="flex-1 text-lg">
                 <h1 className="text-5xl font-bold">{shoe.name}</h1>
                 <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
-                <button className="border border-black p-2 hover:bg-black hover:text-white">
+                <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
                   <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
                 </button>
               </div>
@@ -81,14 +81,14 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
         <div className="absolute inset-0 flex items-center justify-between p-4">
           <button
             onClick={prevSlide}
-            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
           >
             <ArrowLeft fontSize="large" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+            className="p-1 border-black rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
           >
             <ArrowRight fontSize="large" />
           </button>
@@ -125,7 +125,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
                   height={300}
                   className="object-cover pb-10 h-2/5"
                 />
-                <button className="border border-black p-2 hover:bg-black hover:text-white">
+                <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
                   <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
                 </button>
               </div>
@@ -136,14 +136,14 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
         <div className="absolute inset-0 flex items-center justify-between p-4">
           <button
             onClick={prevSlide}
-            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
           >
             <ArrowLeft fontSize="large" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
           >
             <ArrowRight fontSize="large" />
           </button>
