@@ -48,58 +48,117 @@ const Featured = ({ autoSlide }) => {
   ];
 
   return (
-    <div className="w-full h-screen flex bg-grey-bg overflow-hidden relative">
-      <div
-        className="flex transition-transform ease-out duration-1000"
-        style={{ transform: `translateX(-${index * 100}vw)` }}
-      >
-        {FeaturedShoes.map((shoe) => (
-          <div className="w-screen h-4/5 flex items-center">
-            <div className="h-4/5 flex-1 mt-40 ml-40">
-              <Image
-                src={shoe.image}
-                alt={shoe.name}
-                width={500}
-                height={500}
-                className="object-cover h-3/5 w-8/12"
-              />
-            </div>
-            <div className="flex-1 text-lg">
-              <h1 className="text-5xl font-bold">{shoe.name}</h1>
-              <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
-              <button className="border border-black p-2 hover:bg-black hover:text-white">
-                <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="absolute inset-0 flex items-center justify-between p-4">
-        <button
-          onClick={prevSlide}
-          className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+    <div>
+      <h1 className="text-xl font-bold text-center p-5 bg-grey-bg">Featured</h1>
+      {/* Dekstop */}
+      <div className="sm:flex hidden w-full h-screen bg-grey-bg overflow-hidden relative">
+        <div
+          className="flex transition-transform ease-out duration-1000"
+          style={{ transform: `translateX(-${index * 100}vw)` }}
         >
-          <ArrowLeft fontSize="large" />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
-        >
-          <ArrowRight fontSize="large" />
-        </button>
-      </div>
-
-      <div className="absolute mt-96 pt-44 right-0 left-0 ">
-        <div className="flex items-center justify-center gap-2 ">
-          {FeaturedShoes.map((_, i) => (
-            <div
-              className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
-                index === i ? "p-2" : "bg-opacity-50"
-              }`}
-            />
+          {FeaturedShoes.map((shoe) => (
+            <div className="w-screen h-4/5 flex items-center">
+              <div className="h-4/5 flex-1 mt-40 ml-40">
+                <Image
+                  src={shoe.image}
+                  alt={shoe.name}
+                  width={500}
+                  height={500}
+                  className="object-cover h-3/5 w-8/12"
+                />
+              </div>
+              <div className="flex-1 text-lg">
+                <h1 className="text-5xl font-bold">{shoe.name}</h1>
+                <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
+                <button className="border border-black p-2 hover:bg-black hover:text-white">
+                  <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                </button>
+              </div>
+            </div>
           ))}
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-between p-4">
+          <button
+            onClick={prevSlide}
+            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+          >
+            <ArrowLeft fontSize="large" />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+          >
+            <ArrowRight fontSize="large" />
+          </button>
+        </div>
+
+        <div className="absolute mt-96 pt-44 right-0 left-0 ">
+          <div className="flex items-center justify-center gap-2 ">
+            {FeaturedShoes.map((_, i) => (
+              <div
+                className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
+                  index === i ? "p-2" : "bg-opacity-50"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* mobile */}
+      <div className="sm:hidden flex w-full h-96 bg-grey-bg overflow-hidden relative">
+        <div
+          className="flex transition-transform ease-out duration-1000"
+          style={{ transform: `translateX(-${index * 100}vw)` }}
+        >
+          {FeaturedShoes.map((shoe) => (
+            <div className="w-screen flex flex-col items-center">
+              <div className="flex-1 text-center">
+                <h1 className="pt-10 text-xl">{shoe.name}</h1>
+
+                <Image
+                  src={shoe.image}
+                  alt={shoe.name}
+                  width={300}
+                  height={300}
+                  className="object-cover pb-10 h-2/5"
+                />
+                <button className="border border-black p-2 hover:bg-black hover:text-white">
+                  <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-between p-4">
+          <button
+            onClick={prevSlide}
+            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+          >
+            <ArrowLeft fontSize="large" />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+          >
+            <ArrowRight fontSize="large" />
+          </button>
+        </div>
+
+        <div className="absolute bottom-3 right-0 left-0 ">
+          <div className="flex items-center justify-center gap-2 ">
+            {FeaturedShoes.map((_, i) => (
+              <div
+                className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
+                  index === i ? "p-2" : "bg-opacity-50"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
