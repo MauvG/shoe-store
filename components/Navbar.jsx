@@ -16,7 +16,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex gap-10 pt-2 text-lg font-semibold">
+          <div className="flex gap-10 pt-2 text-lg font-semibold mr-32">
             <Link href="/Men" className="hover:underline cursor-pointer">
               Men
             </Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div>
+          <div className="">
             <Link href="/Cart">
               <ShoppingCartOutlined
                 fontSize="large"

@@ -50,6 +50,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
   return (
     <div>
       <h1 className="text-xl font-bold text-center p-5 bg-grey-bg">Featured</h1>
+
       {/* Dekstop */}
       <div className="lg:flex hidden w-full h-[70vh] bg-grey-bg overflow-hidden relative">
         <div
@@ -78,17 +79,43 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           ))}
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-between p-4">
+        <div
+          className="flex transition-transform ease-out duration-1000"
+          style={{ transform: `translateX(-${index * 100}vw)` }}
+        >
+          <div className="w-screen h-4/5 flex items-center">
+            <div className="flex-1 ml-40">
+              <Image
+                src="/AirForce1/main.png"
+                alt="AirForce1"
+                width={500}
+                height={500}
+                className="object-cover h-3/5 w-8/12"
+              />
+            </div>
+            <div className="flex-1 text-lg">
+              <h1 className="text-5xl font-bold">AirForce1</h1>
+              <p className="tracking-wider mt-5 mb-5 mr-40 ">blablabla</p>
+              <button className="rounded-full bg-black text-white shadow-lg shadow-gray-500 p-2 pl-4 pr-4 hover:bg-white hover:text-black">
+                <Link href="/AirForce1">Shop Now</Link>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute mt-[30vh] left-4">
           <button
             onClick={prevSlide}
-            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
+            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-200"
           >
             <ArrowLeft fontSize="large" />
           </button>
+        </div>
 
+        <div className="absolute mt-[30vh] right-4">
           <button
             onClick={nextSlide}
-            className="p-1 border-black rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
+            className="p-1 border-black rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-200"
           >
             <ArrowRight fontSize="large" />
           </button>
@@ -133,17 +160,19 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           ))}
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-between p-4">
+        <div className="absolute mt-[20vh] left-4">
           <button
             onClick={prevSlide}
-            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
+            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-200"
           >
             <ArrowLeft fontSize="large" />
           </button>
+        </div>
 
+        <div className="absolute mt-[20vh] right-4">
           <button
             onClick={nextSlide}
-            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-100"
+            className="p-1 border-black rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-200"
           >
             <ArrowRight fontSize="large" />
           </button>
@@ -189,17 +218,19 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           ))}
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-between p-4">
+        <div className="absolute mt-[30vh] left-4">
           <button
             onClick={prevSlide}
-            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+            className="p-1 rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-200"
           >
             <ArrowLeft fontSize="large" />
           </button>
+        </div>
 
+        <div className="absolute mt-[30vh] right-4">
           <button
             onClick={nextSlide}
-            className="p-1 rounded-full shadow bg-white hover:bg-gray-100"
+            className="p-1 border-black rounded-full shadow-md shadow-gray-500 bg-white hover:bg-gray-200"
           >
             <ArrowRight fontSize="large" />
           </button>
