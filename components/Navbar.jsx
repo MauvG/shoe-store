@@ -6,8 +6,8 @@ const Navbar = () => {
     <div>
       <nav className="p-5 tracking-wider">
         {/* Desktop Navbar */}
-        <div className="sm:flex hidden justify-between">
-          <div>
+        <div className="sm:flex hidden justify-between items-center">
+          <div className="flex-1 flex items-center">
             <Link
               href="/"
               className="text-3xl font-bold cursor-pointer hover:underline"
@@ -16,7 +16,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex gap-10 pt-2 text-lg font-semibold mr-32">
+          <div className="flex-1 flex gap-5 text-lg font-bold pt-1 items-center text-center justify-center">
             <Link href="/Men" className="hover:underline cursor-pointer">
               Men
             </Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="">
+          <div className="flex-1 flex items-center justify-end">
             <Link href="/Cart">
               <ShoppingCartOutlined
                 fontSize="large"

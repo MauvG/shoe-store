@@ -6,7 +6,6 @@ export default function Home() {
     <main className="tracking-wider">
       <Featured autoSlide={true} autoSlideInterval={5000} />
       <Explore />
-      <div className="m-10 text-center">Footer</div>
     </main>
   );
 }
