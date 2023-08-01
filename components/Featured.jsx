@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 import { useEffect, useState } from "react";
+import { featured } from "@/public/data";
 
 const Featured = ({ autoSlide, autoSlideInterval }) => {
   const [index, setIndex] = useState(0);
@@ -26,27 +27,6 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
     };
   }, []);
 
-  const FeaturedShoes = [
-    {
-      name: "Air Force 1",
-      image: "/AirForce1/main.png",
-      alt: "/AirForce1/alt.png",
-      desc: "The radiance lives on in the Air Force 1, the basketball original that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.",
-    },
-    {
-      name: "Dunk Low",
-      image: "/DunkLow/main.png",
-      alt: "/DunkLow/alt.png",
-      desc: "Created for the hardwood but taken to the streets, this '80s b-ball icon returns with classic details and throwback hoops flair. Supple suede overlays help the Nike Dunk channel vintage style while its padded, low-cut collar lets you take your game anywhere—in comfort.",
-    },
-    {
-      name: "Revolution 6",
-      image: "/Revolution6/main.png",
-      alt: "/Revolution6/alt.png",
-      desc: "Here's to new beginnings between you and the pavement. Lace up the 100% recycled laces and set the pace at the start of your running journey with the plush feel of the Revolution 6. We know comfort is key to a successful run.",
-    },
-  ];
-
   return (
     <div>
       <h1 className="text-xl font-bold text-center p-5 bg-grey-bg">Featured</h1>
@@ -57,11 +37,11 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           className="flex transition-transform ease-out duration-1000"
           style={{ transform: `translateX(-${index * 100}vw)` }}
         >
-          {FeaturedShoes.map((shoe) => (
+          {featured.map((shoe) => (
             <div className="w-screen h-4/5 flex items-center">
               <div className="flex-1 ml-40">
                 <Image
-                  src={shoe.image}
+                  src={"/" + shoe.name + "/main.png"}
                   alt={shoe.name}
                   width={500}
                   height={500}
@@ -123,7 +103,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
 
         <div className="absolute bottom-5 right-0 left-0 ">
           <div className="flex items-center justify-center gap-2 ">
-            {FeaturedShoes.map((_, i) => (
+            {featured.map((_, i) => (
               <div
                 className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
                   index === i ? "p-2" : "bg-opacity-50"
@@ -140,7 +120,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           className="flex transition-transform ease-out duration-1000"
           style={{ transform: `translateX(-${index * 100}vw)` }}
         >
-          {FeaturedShoes.map((shoe) => (
+          {featured.map((shoe) => (
             <div className="w-screen flex flex-col items-center">
               <div className="flex-1 text-center">
                 <h1 className="pt-10 text-4xl font-bold">{shoe.name}</h1>
@@ -180,7 +160,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
 
         <div className="absolute bottom-3 right-0 left-0 ">
           <div className="flex items-center justify-center gap-2 ">
-            {FeaturedShoes.map((_, i) => (
+            {featured.map((_, i) => (
               <div
                 className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
                   index === i ? "p-2" : "bg-opacity-50"
@@ -197,7 +177,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           className="flex transition-transform ease-out duration-1000"
           style={{ transform: `translateX(-${index * 100}vw)` }}
         >
-          {FeaturedShoes.map((shoe) => (
+          {featured.map((shoe) => (
             <div className="w-screen h-4/5 flex items-center">
               <div className="flex-1 pl-20">
                 <Image
@@ -238,7 +218,7 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
 
         <div className="absolute bottom-5 right-0 left-0 ">
           <div className="flex items-center justify-center gap-2 ">
-            {FeaturedShoes.map((_, i) => (
+            {featured.map((_, i) => (
               <div
                 className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
                   index === i ? "p-2" : "bg-opacity-50"

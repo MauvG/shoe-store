@@ -3,7 +3,7 @@ import Category from "@/components/Category";
 const page = () => {
   return (
     <div>
-      <Category category="men" />
+      <Category category="kids" />
     </div>
   );
 };
