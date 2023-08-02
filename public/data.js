@@ -28,7 +28,6 @@ export const shoes = [
     category: "men",
     name: "Air Force 1",
     price: 99.99,
-    cart: false,
   },
   {
     id: 3,
