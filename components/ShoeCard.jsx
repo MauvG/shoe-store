@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const ShoeCard = ({ name, price }) => {
@@ -15,7 +16,7 @@ const ShoeCard = ({ name, price }) => {
   };
 
   return (
-    <div className="">
+    <Link href={name.replace(/\s/g, "")}>
       <Image
         src={img}
         alt={name + "main"}
@@ -29,7 +30,7 @@ const ShoeCard = ({ name, price }) => {
         <h1 className="">{name}</h1>
         <h1 className="">€{price}</h1>
       </div>
-    </div>
+    </Link>
   );
 };
 
