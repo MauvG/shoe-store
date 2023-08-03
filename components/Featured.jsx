@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { featured } from "@/public/data";
 
-const Featured = ({ autoSlide, autoSlideInterval }) => {
+const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
   const [index, setIndex] = useState(0);
   const slides = 3;
 
@@ -37,50 +36,30 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           className="flex transition-transform ease-out duration-1000"
           style={{ transform: `translateX(-${index * 100}vw)` }}
         >
-          {featured.map((shoe) => (
-            <div className="w-screen h-4/5 flex items-center">
-              <div className="flex-1 ml-40">
-                <Image
-                  src={"/" + shoe.name + "/main.png"}
-                  alt={shoe.name}
-                  width={500}
-                  height={500}
-                  className="object-cover h-3/5 w-8/12"
-                />
+          {shoesData.map((shoe) =>
+            shoe.featured == true ? (
+              <div className="w-screen h-4/5 flex items-center">
+                <div className="flex-1 ml-40">
+                  <Image
+                    src={"/" + shoe.name + "/main.png"}
+                    alt={shoe.name}
+                    width={500}
+                    height={500}
+                    className="object-cover h-3/5 w-8/12"
+                  />
+                </div>
+                <div className="flex-1 text-lg">
+                  <h1 className="text-5xl font-bold">{shoe.name}</h1>
+                  <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
+                  <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
+                    <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                  </button>
+                </div>
               </div>
-              <div className="flex-1 text-lg">
-                <h1 className="text-5xl font-bold">{shoe.name}</h1>
-                <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
-                <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                  <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div
-          className="flex transition-transform ease-out duration-1000"
-          style={{ transform: `translateX(-${index * 100}vw)` }}
-        >
-          <div className="w-screen h-4/5 flex items-center">
-            <div className="flex-1 ml-40">
-              <Image
-                src="/AirForce1/main.png"
-                alt="AirForce1"
-                width={500}
-                height={500}
-                className="object-cover h-3/5 w-8/12"
-              />
-            </div>
-            <div className="flex-1 text-lg">
-              <h1 className="text-5xl font-bold">AirForce1</h1>
-              <p className="tracking-wider mt-5 mb-5 mr-40 ">blablabla</p>
-              <button className="rounded-full bg-black text-white shadow-lg shadow-gray-500 p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                <Link href="/AirForce1">Shop Now</Link>
-              </button>
-            </div>
-          </div>
+            ) : (
+              <></>
+            )
+          )}
         </div>
 
         <div className="absolute mt-[30vh] left-4">
@@ -103,13 +82,17 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
 
         <div className="absolute bottom-5 right-0 left-0 ">
           <div className="flex items-center justify-center gap-2 ">
-            {featured.map((_, i) => (
-              <div
-                className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
-                  index === i ? "p-2" : "bg-opacity-50"
-                }`}
-              />
-            ))}
+            {shoesData.map((shoe, i) =>
+              shoe.featured == true ? (
+                <div
+                  className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
+                    index === i ? "p-2" : "bg-opacity-50"
+                  }`}
+                />
+              ) : (
+                <></>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -120,24 +103,28 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           className="flex transition-transform ease-out duration-1000"
           style={{ transform: `translateX(-${index * 100}vw)` }}
         >
-          {featured.map((shoe) => (
-            <div className="w-screen flex flex-col items-center">
-              <div className="flex-1 text-center">
-                <h1 className="pt-10 text-4xl font-bold">{shoe.name}</h1>
+          {shoesData.map((shoe) =>
+            shoe.featured == true ? (
+              <div className="w-screen flex flex-col items-center">
+                <div className="flex-1 text-center">
+                  <h1 className="pt-10 text-4xl font-bold">{shoe.name}</h1>
 
-                <Image
-                  src={shoe.image}
-                  alt={shoe.name}
-                  width={300}
-                  height={300}
-                  className="object-cover pb-10 h-2/5"
-                />
-                <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                  <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
-                </button>
+                  <Image
+                    src={"/" + shoe.name + "/main.png"}
+                    alt={shoe.name}
+                    width={300}
+                    height={300}
+                    className="object-cover pb-10 h-2/5"
+                  />
+                  <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
+                    <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ) : (
+              <></>
+            )
+          )}
         </div>
 
         <div className="absolute mt-[20vh] left-4">
@@ -160,13 +147,17 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
 
         <div className="absolute bottom-3 right-0 left-0 ">
           <div className="flex items-center justify-center gap-2 ">
-            {featured.map((_, i) => (
-              <div
-                className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
-                  index === i ? "p-2" : "bg-opacity-50"
-                }`}
-              />
-            ))}
+            {shoesData.map((shoe, i) =>
+              shoe.featured == true ? (
+                <div
+                  className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
+                    index === i ? "p-2" : "bg-opacity-50"
+                  }`}
+                />
+              ) : (
+                <></>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -177,25 +168,29 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
           className="flex transition-transform ease-out duration-1000"
           style={{ transform: `translateX(-${index * 100}vw)` }}
         >
-          {featured.map((shoe) => (
-            <div className="w-screen h-4/5 flex items-center">
-              <div className="flex-1 pl-20">
-                <Image
-                  src={shoe.image}
-                  alt={shoe.name}
-                  width={500}
-                  height={500}
-                  className="object-cover"
-                />
+          {shoesData.map((shoe) =>
+            shoe.featured == true ? (
+              <div className="w-screen h-4/5 flex items-center">
+                <div className="flex-1 pl-20">
+                  <Image
+                    src={"/" + shoe.name + "/main.png"}
+                    alt={shoe.name}
+                    width={500}
+                    height={500}
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1 text-lg pl-20">
+                  <h1 className="text-5xl pb-5 font-bold">{shoe.name}</h1>
+                  <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
+                    <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                  </button>
+                </div>
               </div>
-              <div className="flex-1 text-lg pl-20">
-                <h1 className="text-5xl pb-5 font-bold">{shoe.name}</h1>
-                <button className="border border-black p-2 hover:bg-black hover:text-white">
-                  <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
-                </button>
-              </div>
-            </div>
-          ))}
+            ) : (
+              <></>
+            )
+          )}
         </div>
 
         <div className="absolute mt-[30vh] left-4">
@@ -218,13 +213,17 @@ const Featured = ({ autoSlide, autoSlideInterval }) => {
 
         <div className="absolute bottom-5 right-0 left-0 ">
           <div className="flex items-center justify-center gap-2 ">
-            {featured.map((_, i) => (
-              <div
-                className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
-                  index === i ? "p-2" : "bg-opacity-50"
-                }`}
-              />
-            ))}
+            {shoesData.map((shoe, i) =>
+              shoe.featured == true ? (
+                <div
+                  className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
+                    index === i ? "p-2" : "bg-opacity-50"
+                  }`}
+                />
+              ) : (
+                <></>
+              )
+            )}
           </div>
         </div>
       </div>

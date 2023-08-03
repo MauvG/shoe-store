@@ -1,8 +1,6 @@
 import ShoeCard from "./ShoeCard";
-import { shoes } from "@/public/data";
-import Dropdown from "./Dropdown";
 
-const Category = ({ category }) => {
+const Category = ({ shoes, category }) => {
   return (
     <div>
       {/* Dekstop */}
