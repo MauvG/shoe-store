@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const ShoeCard = ({ name, price }) => {
+const ShoeCard = ({ id, name, price }) => {
   const [img, setImg] = useState("/" + name + "/main.png");
 
   const handleMouseEnter = () => {
@@ -16,7 +16,7 @@ const ShoeCard = ({ name, price }) => {
   };
 
   return (
-    <Link href={name.replace(/\s/g, "")}>
+    <Link href={id === undefined ? "/" : id}>
       <Image
         src={img}
         alt={name + "main"}
