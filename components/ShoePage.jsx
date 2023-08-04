@@ -1,14 +1,18 @@
 "use client";
 
+import { Close, Done } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ShoePage = ({ shoe }) => {
   const [src, setSrc] = useState("/" + shoe.name + "/main.png");
   const [sizeChosen, setSizeChosen] = useState(0);
   const [sizes, setSizes] = useState([]);
   const [alert, setAlert] = useState("hidden mt-2 text-red-500");
+  const [popup, setPopup] = useState(
+    "hidden fixed top-0 left-0 z-50 w-screen h-screen"
+  );
 
   const initSizes = () => {
     const array = [];
@@ -54,6 +58,33 @@ const ShoePage = ({ shoe }) => {
       setAlert("mt-2 text-red-500");
       return;
     }
+
+    setPopup("fixed top-0 left-0 z-50 w-screen h-screen");
+    addToCart();
+  };
+
+  const addToCart = async () => {
+    const name = shoe.name;
+    const price = shoe.price;
+    const size = sizeChosen;
+    const quantity = 1;
+
+    await fetch("http://127.0.0.1:8090/api/collections/cart/records", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        price,
+        size,
+        quantity,
+      }),
+    });
+  };
+
+  const closePopup = () => {
+    setPopup("hidden fixed top-0 left-0 z-50 w-screen h-screen");
   };
 
   return (
@@ -136,6 +167,50 @@ const ShoePage = ({ shoe }) => {
                 Add to Cart
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={popup}>
+        <div className="bg-white w-1/4  m-auto mt-[20vh] border rounded-xl shadow-xl p-2 text-center">
+          <h1 className="p-4 font-bold text-xl">
+            <Done /> Added to Cart
+          </h1>
+
+          <div className="flex justify-center gap-4">
+            <div className="mt-6">
+              <Image
+                src={"/" + shoe.name + "/main.png"}
+                alt={shoe.name}
+                width={100}
+                height={100}
+                className="shadow rounded-lg h-4/6 object-cover"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1 text-left">
+              <h1 className="pt-4 text-lg">{shoe.name}</h1>
+              <div className="opacity-50">
+                {shoe.category === "men" ? <h1>Men's Shoes</h1> : <></>}
+                {shoe.category === "women" ? <h1>Women's Shoes</h1> : <></>}
+                {shoe.category === "kids" ? <h1>Kids' Shoes</h1> : <></>}
+              </div>
+              <h1 className="opacity-50">Size UK {sizeChosen}</h1>
+              <h1 className="pb-8 text-lg">€{shoe.price}</h1>
+            </div>
+          </div>
+
+          <div className="flex justify-center gap-2 w-full">
+            <button className="rounded-full border bg-zinc-800 text-white p-4 w-1/2 hover:bg-zinc-600">
+              <Link href="/Cart">Proceed to Cart</Link>
+            </button>
+
+            <button
+              onClick={closePopup}
+              className="rounded-full border shadow-lg p-4 w-1/2 hover:bg-zinc-200"
+            >
+              Continue Shopping
+            </button>
           </div>
         </div>
       </div>

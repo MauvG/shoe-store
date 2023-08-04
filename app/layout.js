@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col text-zinc-800">
           <Navbar />
           {children}
           <Footer />
