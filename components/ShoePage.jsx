@@ -1,6 +1,6 @@
 "use client";
 
-import { Close, Done } from "@mui/icons-material";
+import { ArrowLeft, ArrowRight, Close, Done } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -53,6 +53,26 @@ const ShoePage = ({ shoe }) => {
     setSrc("/" + shoe.name + "/shoe.png");
   };
 
+  const prevImg = () => {
+    if (src === "/" + shoe.name + "/main.png") {
+      pictureShoe();
+    } else if (src === "/" + shoe.name + "/alt.png") {
+      pictureMain();
+    } else if (src === "/" + shoe.name + "/shoe.png") {
+      pictureAlt();
+    }
+  };
+
+  const nextImg = () => {
+    if (src === "/" + shoe.name + "/main.png") {
+      pictureAlt();
+    } else if (src === "/" + shoe.name + "/alt.png") {
+      pictureShoe();
+    } else if (src === "/" + shoe.name + "/shoe.png") {
+      pictureMain();
+    }
+  };
+
   const handleCart = () => {
     if (sizeChosen === 0) {
       setAlert("mt-2 text-red-500");
@@ -98,7 +118,7 @@ const ShoePage = ({ shoe }) => {
                 alt={shoe.name}
                 width={75}
                 height={75}
-                className="shadow rounded-lg hover:brightness-75"
+                className="shadow rounded-lg hover:brightness-75 h-[75px] object-cover"
                 onMouseEnter={pictureMain}
               />
               <Image
@@ -106,7 +126,7 @@ const ShoePage = ({ shoe }) => {
                 alt={shoe.name}
                 width={75}
                 height={75}
-                className="shadow rounded-lg hover:brightness-75"
+                className="shadow rounded-lg hover:brightness-75 h-[75px] object-cover"
                 onMouseEnter={pictureAlt}
               />
               <Image
@@ -114,7 +134,7 @@ const ShoePage = ({ shoe }) => {
                 alt={shoe.name}
                 width={75}
                 height={75}
-                className="shadow rounded-lg hover:brightness-75"
+                className="shadow rounded-lg hover:brightness-75 h-[75px] object-cover"
                 onMouseEnter={pictureShoe}
               />
             </div>
@@ -126,6 +146,18 @@ const ShoePage = ({ shoe }) => {
                 height={500}
                 className="shadow rounded-2xl object-contain"
               />
+              <div className="absolute right-4 bottom-4 flex gap-2">
+                <div className="bg-white rounded-full shadow-md hover:bg-gray-200">
+                  <button onClick={prevImg}>
+                    <ArrowLeft fontSize="large" />
+                  </button>
+                </div>
+                <div className="bg-white rounded-full shadow-md hover:bg-gray-200">
+                  <button onClick={nextImg}>
+                    <ArrowRight fontSize="large" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
