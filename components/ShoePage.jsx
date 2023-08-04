@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const ShoePage = ({ shoe }) => {
   const [src, setSrc] = useState("/" + shoe.name + "/main.png");
   const [sizeChosen, setSizeChosen] = useState(0);
   const [sizes, setSizes] = useState([]);
+  const [alert, setAlert] = useState("hidden mt-2 text-red-500");
 
   const initSizes = () => {
     const array = [];
@@ -32,6 +34,7 @@ const ShoePage = ({ shoe }) => {
     let array = initSizes();
     array[size.index].chosen = true;
     setSizes(array);
+    setAlert("hidden mt-2 text-red-500");
   };
 
   const pictureMain = () => {
@@ -46,8 +49,15 @@ const ShoePage = ({ shoe }) => {
     setSrc("/" + shoe.name + "/shoe.png");
   };
 
+  const handleCart = () => {
+    if (sizeChosen === 0) {
+      setAlert("mt-2 text-red-500");
+      return;
+    }
+  };
+
   return (
-    <div>
+    <div className="">
       <div className="m-20 flex justify-center text-center">
         <div className="flex-1">
           <div className="sticky top-20 flex gap-2 justify-end mr-10">
@@ -57,7 +67,7 @@ const ShoePage = ({ shoe }) => {
                 alt={shoe.name}
                 width={75}
                 height={75}
-                className="hover:brightness-75"
+                className="shadow rounded-lg hover:brightness-75"
                 onMouseEnter={pictureMain}
               />
               <Image
@@ -65,7 +75,7 @@ const ShoePage = ({ shoe }) => {
                 alt={shoe.name}
                 width={75}
                 height={75}
-                className="hover:brightness-75"
+                className="shadow rounded-lg hover:brightness-75"
                 onMouseEnter={pictureAlt}
               />
               <Image
@@ -73,7 +83,7 @@ const ShoePage = ({ shoe }) => {
                 alt={shoe.name}
                 width={75}
                 height={75}
-                className="hover:brightness-75"
+                className="shadow rounded-lg hover:brightness-75"
                 onMouseEnter={pictureShoe}
               />
             </div>
@@ -83,7 +93,7 @@ const ShoePage = ({ shoe }) => {
                 alt={shoe.name}
                 width={500}
                 height={500}
-                className="object-contain"
+                className="shadow rounded-2xl object-contain"
               />
             </div>
           </div>
@@ -118,7 +128,11 @@ const ShoePage = ({ shoe }) => {
             </div>
 
             <div className="mt-2">
-              <button className="bg-black text-white rounded-full shadow w-96 p-4">
+              <h1 className={alert}>Please select a size.</h1>
+              <button
+                onClick={handleCart}
+                className="bg-black text-white rounded-full shadow-lg w-96 p-4 hover:bg-zinc-600"
+              >
                 Add to Cart
               </button>
             </div>

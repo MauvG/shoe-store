@@ -1,6 +1,7 @@
 import Link from "next/link";
+import React from "react";
 
-export default function NotFound() {
+const ErrorPage = () => {
   return (
     <div className="text-center pt-16">
       <h1 className="text-4xl">404</h1>
@@ -16,4 +17,6 @@ export default function NotFound() {
       </p>
     </div>
   );
-}
+};
+
+export default ErrorPage;
