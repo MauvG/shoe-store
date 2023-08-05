@@ -1,5 +1,7 @@
 "use client";
 
+// TODO: Work on mobile layout
+
 import { ArrowLeft, ArrowRight, Close, Done } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
@@ -111,7 +113,7 @@ const ShoePage = ({ shoe }) => {
     <div className="">
       <div className="m-20 flex justify-center text-center">
         <div className="flex-1">
-          <div className="sticky top-20 flex gap-2 justify-end mr-10">
+          <div className="sticky top-10 flex gap-2 justify-end mr-10">
             <div className="flex flex-col gap-2">
               <Image
                 src={"/" + shoe.name + "/main.png"}

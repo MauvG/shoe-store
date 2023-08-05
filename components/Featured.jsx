@@ -52,7 +52,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                   <h1 className="text-5xl font-bold">{shoe.name}</h1>
                   <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
                   <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                    <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                    <Link href={"/shoes/" + shoe.id}>Shop Now</Link>
                   </button>
                 </div>
               </div>
@@ -117,7 +117,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                     className="object-cover pb-10 h-2/5"
                   />
                   <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                    <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                    <Link href={"/shoes/" + shoe.id}>Shop Now</Link>
                   </button>
                 </div>
               </div>
@@ -183,7 +183,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                 <div className="flex-1 text-lg pl-20">
                   <h1 className="text-5xl pb-5 font-bold">{shoe.name}</h1>
                   <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                    <Link href={shoe.name.replace(/\s/g, "")}>Shop Now</Link>
+                    <Link href={"/shoes/" + shoe.id}>Shop Now</Link>
                   </button>
                 </div>
               </div>

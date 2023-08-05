@@ -16,7 +16,7 @@ const ShoeCard = ({ id, name, price }) => {
   };
 
   return (
-    <Link href={id === undefined ? "/" : id}>
+    <Link href={id === undefined ? "/" : "/shoes/" + id}>
       <Image
         src={img}
         alt={name + "main"}

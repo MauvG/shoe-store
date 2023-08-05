@@ -9,7 +9,7 @@ const Explore = () => {
       {/* Desktop */}
       <div className="hidden sm:flex text-center text-2xl justify-center gap-5 pl-10 pr-10">
         <div className="">
-          <Link href="/Men">
+          <Link href="/men">
             <div className="absolute bg-white rounded-full hover:bg-black hover:text-white  shadow-lg m-5 ml-4 p-2 pr-4 pl-4">
               <h1 className="text-lg">Men</h1>
             </div>
@@ -24,7 +24,7 @@ const Explore = () => {
         </div>
 
         <div className="">
-          <Link href="/Women">
+          <Link href="/women">
             <div className="absolute bg-white rounded-full hover:bg-black hover:text-white shadow-lg m-5 ml-4 p-2 pr-4 pl-4">
               <h1 className="text-lg">Women</h1>
             </div>
@@ -39,7 +39,7 @@ const Explore = () => {
         </div>
 
         <div className="">
-          <Link href="/Kids">
+          <Link href="/kids">
             <div className="absolute bg-white rounded-full hover:bg-black hover:text-white shadow-lg m-5 ml-4 p-2 pr-4 pl-4">
               <h1 className="text-lg">Kids</h1>
             </div>
@@ -57,7 +57,7 @@ const Explore = () => {
       {/* Mobile */}
       <div className="sm:hidden flex flex-col justify-center items-center text-center text-2xl">
         <div className="m-1">
-          <Link href="/Men">
+          <Link href="/men">
             <div className="absolute bg-white rounded-full shadow-lg m-5 ml-4 p-2 pr-4 pl-4">
               <h1 className="text-lg">Men</h1>
             </div>
@@ -72,7 +72,7 @@ const Explore = () => {
         </div>
 
         <div className="m-1">
-          <Link href="/Women">
+          <Link href="/women">
             <div className="absolute bg-white rounded-full shadow-lg m-5 ml-4 p-2 pr-4 pl-4">
               <h1 className="text-lg">Women</h1>
             </div>
@@ -87,7 +87,7 @@ const Explore = () => {
         </div>
 
         <div className="m-1">
-          <Link href="/Kids">
+          <Link href="/kids">
             <div className="absolute bg-white rounded-full shadow-lg m-5 ml-4 p-2 pr-4 pl-4">
               <h1 className="text-lg">Kids</h1>
             </div>
