@@ -40,7 +40,7 @@ const Category = ({ shoes, category }) => {
           {shoes.map((shoe) =>
             shoe.category === category ? (
               <div className="basis-44">
-                <ShoeCard name={shoe.name} price={shoe.price} />
+                <ShoeCard id={shoe.id} name={shoe.name} price={shoe.price} />
               </div>
             ) : (
               <></>

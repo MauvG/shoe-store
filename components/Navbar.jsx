@@ -29,7 +29,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex-1 flex items-center justify-end">
-            <Link href="/Cart">
+            <Link href="/cart">
               <ShoppingCartOutlined
                 fontSize="large"
                 className="cursor-pointer"
@@ -62,7 +62,7 @@ const Navbar = () => {
           </div>
 
           <div className="pt-5">
-            <Link href="/Cart">
+            <Link href="/cart">
               <ShoppingCartOutlined
                 fontSize="large"
                 className="cursor-pointer"

@@ -19,9 +19,10 @@ const ShoeCard = ({ id, name, price }) => {
     <Link href={id === undefined ? "/" : "/shoes/" + id}>
       <Image
         src={img}
-        alt={name + "main"}
+        alt={name + " main"}
         width={500}
         height={500}
+        loading="eager"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       />

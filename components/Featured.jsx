@@ -45,6 +45,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                     alt={shoe.name}
                     width={500}
                     height={500}
+                    loading="eager"
                     className="object-cover h-3/5 w-8/12"
                   />
                 </div>
@@ -114,6 +115,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                     alt={shoe.name}
                     width={300}
                     height={300}
+                    loading="eager"
                     className="object-cover pb-10 h-2/5"
                   />
                   <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
@@ -177,6 +179,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                     alt={shoe.name}
                     width={500}
                     height={500}
+                    loading="eager"
                     className="object-cover"
                   />
                 </div>

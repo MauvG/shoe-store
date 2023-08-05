@@ -18,6 +18,7 @@ const Explore = () => {
               alt="Men"
               width={500}
               height={500}
+              loading="eager"
               className="object-cover"
             />
           </Link>
@@ -33,6 +34,7 @@ const Explore = () => {
               alt="Men"
               width={500}
               height={500}
+              loading="eager"
               className="object-cover"
             />
           </Link>
@@ -48,6 +50,7 @@ const Explore = () => {
               alt="Men"
               width={500}
               height={500}
+              loading="eager"
               className="object-cover"
             />
           </Link>
@@ -66,6 +69,7 @@ const Explore = () => {
               alt="Men"
               width={300}
               height={300}
+              loading="eager"
               className="object-cover"
             />
           </Link>
@@ -81,6 +85,7 @@ const Explore = () => {
               alt="Men"
               width={300}
               height={300}
+              loading="eager"
               className="object-cover"
             />
           </Link>
@@ -96,6 +101,7 @@ const Explore = () => {
               alt="Men"
               width={300}
               height={300}
+              loading="eager"
               className="object-cover"
             />
           </Link>
