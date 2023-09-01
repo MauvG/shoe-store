@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import CartShoeCard from "./CartShoeCard";
+import Checkout from "./Checkout";
 
 const Cart = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     fetch("http://127.0.0.1:8090/api/collections/cart/records")
       .then((res) => res.json())
@@ -19,13 +20,19 @@ const Cart = () => {
   if (isLoading) return <p></p>;
   if (!data) return <p>No profile data</p>;
 
+  let total = 0;
+  for (let i = 0; i < data.items.length; i++) {
+    total += data.items[i].price;
+  }
+  
   return (
     <div>
-      <div className="flex m-20">
-        <div className="flex-[60%] h-96">
+      {/* desktop */}
+      <div className="hidden lg:flex mt-20 ml-40 mr-40">
+        <div className="flex-[70%]">
           <div className="">
             <h1 className="text-xl font-bold">Your Cart</h1>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 relative">
               {data.items.map((shoe) => (
                 <div className="mt-4">
                   <CartShoeCard shoe={shoe} />
@@ -35,7 +42,49 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        <div className="flex-[40%] h-96 border"></div>
+        <div className="flex-[30%]">
+          <Checkout total={total} />
+        </div>
+      </div>
+
+      {/* medium */}
+      <div className="lg:hidden flex flex-col mt-20 ml-40 mr-40">
+        <div className="flex-[70%]">
+          <div className="">
+            <h1 className="text-xl font-bold">Your Cart</h1>
+            <div className="flex flex-col gap-2 relative">
+              {data.items.map((shoe) => (
+                <div className="mt-4">
+                  <CartShoeCard shoe={shoe} />
+                  <hr className="mt-4" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="flex-[30%]">
+          <Checkout total={total} />
+        </div>
+      </div>
+
+      {/* mobile */}
+      <div className="lg:hidden flex flex-col mt-20 ml-10 mr-10">
+        <div className="flex-[70%]">
+          <div className="">
+            <h1 className="text-xl font-bold">Your Cart</h1>
+            <div className="flex flex-col gap-2 relative">
+              {data.items.map((shoe) => (
+                <div className="mt-4">
+                  <CartShoeCard shoe={shoe} />
+                  <hr className="mt-4" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="flex-[30%]">
+          <Checkout total={total} />
+        </div>
       </div>
     </div>
   );
