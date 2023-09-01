@@ -7,7 +7,7 @@ const Checkout = ({ total }) => {
   const [textClass, setTextClass] = useState("border rounded-full pl-4 w-1/2");
   const [errorClass, setErrorClass] = useState("hidden");
   const [codeApplied, setCodeApplied] = useState("hidden");
-  const [subtotal, setSubtotal] = useState(total);
+  const [subtotal, setSubtotal] = useState(Math.round(total * 100) / 100);
 
   const handlePromo = () => {
     let promo = document.getElementById("promo").value;
@@ -19,14 +19,14 @@ const Checkout = ({ total }) => {
       setErrorClass("hidden");
       setCodeApplied("text-green-500");
 
-      setSubtotal(total * 0.9);
+      setSubtotal(Math.round(total * 0.9 * 100) / 100);
     } else {
       setPromoUsed(false);
       setTextClass("border border-red-600 rounded-full pl-4 w-1/2");
       setErrorClass("text-red-600");
       setCodeApplied("hidden");
 
-      setSubtotal(total);
+      setSubtotal(Math.round(total * 100) / 100);
     }
   };
 
@@ -36,11 +36,7 @@ const Checkout = ({ total }) => {
 
       <h1 className=" ">Have a promo code?</h1>
       <div className="flex justify-between gap-2">
-        <input
-          id="promo"
-          placeholder="Enter promo"
-          className={textClass}
-        />
+        <input id="promo" placeholder="Enter promo" className={textClass} />
         <button
           onClick={handlePromo}
           className="w-1/2 bg-black text-white rounded-full shadow-lg p-2 hover:bg-zinc-600"
