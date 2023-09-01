@@ -48,7 +48,7 @@ const Cart = () => {
       </div>
 
       {/* medium */}
-      <div className="lg:hidden flex flex-col mt-20 ml-40 mr-40">
+      <div className="lg:hidden max-sm:hidden flex flex-col mt-20 ml-40 mr-40">
         <div className="flex-[70%]">
           <div className="">
             <h1 className="text-xl font-bold">Your Cart</h1>
@@ -68,7 +68,7 @@ const Cart = () => {
       </div>
 
       {/* mobile */}
-      <div className="lg:hidden flex flex-col mt-20 ml-10 mr-10">
+      <div className="sm:hidden flex flex-col mt-20 ml-10 mr-10">
         <div className="flex-[70%]">
           <div className="">
             <h1 className="text-xl font-bold">Your Cart</h1>
