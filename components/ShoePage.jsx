@@ -189,13 +189,17 @@ const ShoePage = ({ shoe }) => {
                 {sizes.map((size) =>
                   size.chosen === false ? (
                     <button
+                      key={size.size}
                       onClick={() => chooseSize(size)}
                       className="border rounded-md p-3 shadow hover:border-black"
                     >
                       {size.size}
                     </button>
                   ) : (
-                    <button className="border rounded-md p-3 shadow border-black">
+                    <button
+                      key={size.size}
+                      className="border rounded-md p-3 shadow border-black"
+                    >
                       {size.size}
                     </button>
                   )
@@ -332,13 +336,17 @@ const ShoePage = ({ shoe }) => {
               {sizes.map((size) =>
                 size.chosen === false ? (
                   <button
+                    key={size.size}
                     onClick={() => chooseSize(size)}
                     className="border rounded-md p-3 shadow hover:border-black"
                   >
                     UK {size.size}
                   </button>
                 ) : (
-                  <button className="border rounded-md p-3 shadow border-black">
+                  <button
+                    key={size.size}
+                    className="border rounded-md p-3 shadow border-black"
+                  >
                     UK {size.size}
                   </button>
                 )
@@ -475,13 +483,17 @@ const ShoePage = ({ shoe }) => {
               {sizes.map((size) =>
                 size.chosen === false ? (
                   <button
+                    key={size.size}
                     onClick={() => chooseSize(size)}
                     className="border rounded-md p-3 shadow hover:border-black"
                   >
                     UK {size.size}
                   </button>
                 ) : (
-                  <button className="border rounded-md p-3 shadow border-black">
+                  <button
+                    key={size.size}
+                    className="border rounded-md p-3 shadow border-black"
+                  >
                     UK {size.size}
                   </button>
                 )
