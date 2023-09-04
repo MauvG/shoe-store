@@ -38,7 +38,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
         >
           {shoesData.map((shoe) =>
             shoe.featured == true ? (
-              <div className="w-screen h-4/5 flex items-center">
+              <div key={shoe._id} className="w-screen h-4/5 flex items-center">
                 <div className="flex-1 ml-40">
                   <Image
                     src={"/" + shoe.name + "/main.png"}
@@ -53,12 +53,12 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                   <h1 className="text-5xl font-bold">{shoe.name}</h1>
                   <p className="tracking-wider mt-5 mb-5 mr-40 ">{shoe.desc}</p>
                   <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                    <Link href={"/shoes/" + shoe.id}>Shop Now</Link>
+                    <Link href={"/shoes/" + shoe._id}>Shop Now</Link>
                   </button>
                 </div>
               </div>
             ) : (
-              <></>
+              <div key={shoe._id}></div>
             )
           )}
         </div>
@@ -86,12 +86,13 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
             {shoesData.map((shoe, i) =>
               shoe.featured == true ? (
                 <div
+                  key={shoe._id}
                   className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
                     index === i ? "p-2" : "bg-opacity-50"
                   }`}
                 />
               ) : (
-                <></>
+                <div key={shoe._id}></div>
               )
             )}
           </div>
@@ -106,7 +107,10 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
         >
           {shoesData.map((shoe) =>
             shoe.featured == true ? (
-              <div className="w-screen flex flex-col items-center">
+              <div
+                key={shoe._id}
+                className="w-screen flex flex-col items-center"
+              >
                 <div className="flex-1 text-center">
                   <h1 className="pt-10 text-4xl font-bold">{shoe.name}</h1>
 
@@ -119,12 +123,12 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                     className="object-cover pb-10 h-2/5"
                   />
                   <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                    <Link href={"/shoes/" + shoe.id}>Shop Now</Link>
+                    <Link href={"/shoes/" + shoe._id}>Shop Now</Link>
                   </button>
                 </div>
               </div>
             ) : (
-              <></>
+              <div key={shoe._id}></div>
             )
           )}
         </div>
@@ -152,12 +156,13 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
             {shoesData.map((shoe, i) =>
               shoe.featured == true ? (
                 <div
+                  key={shoe._id}
                   className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
                     index === i ? "p-2" : "bg-opacity-50"
                   }`}
                 />
               ) : (
-                <></>
+                <div key={shoe._id}></div>
               )
             )}
           </div>
@@ -172,7 +177,7 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
         >
           {shoesData.map((shoe) =>
             shoe.featured == true ? (
-              <div className="w-screen h-4/5 flex items-center">
+              <div key={shoe._id} className="w-screen h-4/5 flex items-center">
                 <div className="flex-1 pl-20">
                   <Image
                     src={"/" + shoe.name + "/main.png"}
@@ -186,12 +191,12 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
                 <div className="flex-1 text-lg pl-20">
                   <h1 className="text-5xl pb-5 font-bold">{shoe.name}</h1>
                   <button className="rounded-full shadow bg-black text-white p-2 pl-4 pr-4 hover:bg-white hover:text-black">
-                    <Link href={"/shoes/" + shoe.id}>Shop Now</Link>
+                    <Link href={"/shoes/" + shoe._id}>Shop Now</Link>
                   </button>
                 </div>
               </div>
             ) : (
-              <></>
+              <div key={shoe._id}></div>
             )
           )}
         </div>
@@ -219,12 +224,13 @@ const Featured = ({ shoesData, autoSlide, autoSlideInterval }) => {
             {shoesData.map((shoe, i) =>
               shoe.featured == true ? (
                 <div
+                  key={shoe._id}
                   className={`transition-all w-3 h-3 bg-gray-500 rounded-full ${
                     index === i ? "p-2" : "bg-opacity-50"
                   }`}
                 />
               ) : (
-                <></>
+                <div key={shoe._id}></div>
               )
             )}
           </div>

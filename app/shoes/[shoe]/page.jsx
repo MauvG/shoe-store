@@ -17,9 +17,9 @@ const page = ({ params }) => {
     fetchData();
   }, []);
 
-  if (!shoeData) return <ErrorPage />;
+  if (!shoeData) return;
 
-  return <ShoePage shoe={shoeData} />;
+  return <ShoePage shoe={shoeData} fallback=<Error /> />;
 };
 
 export default page;

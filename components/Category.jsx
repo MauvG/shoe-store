@@ -16,11 +16,11 @@ const Category = ({ shoes, category }) => {
         <div className="m-10 flex gap-4 justify-center">
           {shoes.map((shoe) =>
             shoe.category === category ? (
-              <div className="">
+              <div key={shoe._id} className="">
                 <ShoeCard id={shoe._id} name={shoe.name} price={shoe.price} />
               </div>
             ) : (
-              <></>
+              <div key={shoe._id}></div>
             )
           )}
         </div>
@@ -39,11 +39,11 @@ const Category = ({ shoes, category }) => {
         <div className="flex flex-wrap gap-2 justify-center">
           {shoes.map((shoe) =>
             shoe.category === category ? (
-              <div className="basis-44">
+              <div key={shoe._id} className="basis-44">
                 <ShoeCard id={shoe._id} name={shoe.name} price={shoe.price} />
               </div>
             ) : (
-              <></>
+              <div key={shoe._id}></div>
             )
           )}
         </div>
