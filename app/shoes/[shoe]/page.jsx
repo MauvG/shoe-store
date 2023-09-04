@@ -1,19 +1,25 @@
+"use client";
+
 import ErrorPage from "@/components/ErrorPage";
 import ShoePage from "@/components/ShoePage";
+import { useEffect, useState } from "react";
 
-async function getShoe(shoeID) {
-  const res = await fetch(
-    `http://127.0.0.1:8090/api/collections/shoes/records/${shoeID}`
-  );
+const page = ({ params }) => {
+  const [shoeData, setShoeData] = useState(null);
 
-  const data = await res.json();
-  return data;
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`/api/shoes/${params.shoe}`);
+      const data = await response.json();
+      setShoeData(data);
+    };
 
-const page = async ({ params }) => {
-  const shoe = await getShoe(params.shoe);
+    fetchData();
+  }, []);
 
-  return <div>{shoe.code ? <ErrorPage /> : <ShoePage shoe={shoe} />}</div>;
+  if (!shoeData) return <ErrorPage />;
+
+  return <ShoePage shoe={shoeData} />;
 };
 
 export default page;

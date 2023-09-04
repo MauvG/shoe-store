@@ -1,16 +1,23 @@
+"use client";
+
 import Explore from "@/components/Explore";
 import Featured from "@/components/Featured";
+import { useEffect, useState } from "react";
 
-export async function getShoesData() {
-  const res = await fetch(
-    "http://127.0.0.1:8090/api/collections/shoes/records"
-  );
-  const data = await res.json();
-  return data?.items;
-}
+export default function Home() {
+  const [shoesData, setShoesData] = useState(null);
 
-export default async function Home() {
-  const shoesData = await getShoesData();
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/shoes");
+      const data = await response.json();
+      setShoesData(data);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!shoesData) return;
 
   return (
     <main className="tracking-wider">
