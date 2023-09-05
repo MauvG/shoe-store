@@ -7,9 +7,9 @@ import Checkout from "./Checkout";
 const Cart = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  
+
   useEffect(() => {
-    fetch("http://127.0.0.1:8090/api/collections/cart/records")
+    fetch("/api/cart")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -18,13 +18,13 @@ const Cart = () => {
   }, []);
 
   if (isLoading) return <p></p>;
-  if (!data) return <p>No profile data</p>;
+  if (!data) return <p>No data</p>;
 
   let total = 0;
-  for (let i = 0; i < data.items.length; i++) {
-    total += data.items[i].price;
+  for (let i = 0; i < data.length; i++) {
+    total += data[i].price;
   }
-  
+
   return (
     <div>
       {/* desktop */}
@@ -33,12 +33,16 @@ const Cart = () => {
           <div className="">
             <h1 className="text-xl font-bold">Your Cart</h1>
             <div className="flex flex-col gap-2 relative">
-              {data.items.map((shoe) => (
-                <div className="mt-4">
-                  <CartShoeCard shoe={shoe} />
-                  <hr className="mt-4" />
-                </div>
-              ))}
+              {data.length === 0 ? (
+                <p className="mt-2">There are no items in your cart.</p>
+              ) : (
+                data.map((shoe) => (
+                  <div key={shoe._id} className="mt-4">
+                    <CartShoeCard shoe={shoe} />
+                    <hr className="mt-4" />
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -53,12 +57,16 @@ const Cart = () => {
           <div className="">
             <h1 className="text-xl font-bold">Your Cart</h1>
             <div className="flex flex-col gap-2 relative">
-              {data.items.map((shoe) => (
-                <div className="mt-4">
-                  <CartShoeCard shoe={shoe} />
-                  <hr className="mt-4" />
-                </div>
-              ))}
+              {data.length === 0 ? (
+                <p className="mt-2">There are no items in your cart.</p>
+              ) : (
+                data.map((shoe) => (
+                  <div key={shoe._id} className="mt-4">
+                    <CartShoeCard shoe={shoe} />
+                    <hr className="mt-4" />
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -73,12 +81,16 @@ const Cart = () => {
           <div className="">
             <h1 className="text-xl font-bold">Your Cart</h1>
             <div className="flex flex-col gap-2 relative">
-              {data.items.map((shoe) => (
-                <div className="mt-4">
-                  <CartShoeCard shoe={shoe} />
-                  <hr className="mt-4" />
-                </div>
-              ))}
+              {data.length === 0 ? (
+                <p className="mt-2">There are no items in your cart.</p>
+              ) : (
+                data.map((shoe) => (
+                  <div key={shoe._id} className="mt-4">
+                    <CartShoeCard shoe={shoe} />
+                    <hr className="mt-4" />
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>

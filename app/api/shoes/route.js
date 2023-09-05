@@ -9,6 +9,6 @@ export const GET = async (request) => {
 
     return new Response(JSON.stringify(shoesData), { status: 200 });
   } catch (error) {
-    return new Response("Failed to fetch all prompts", { status: 500 });
+    return new Response("Failed to fetch all shoes", { status: 500 });
   }
 };

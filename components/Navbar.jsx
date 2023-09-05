@@ -17,13 +17,22 @@ const Navbar = () => {
           </div>
 
           <div className="flex-1 flex gap-5 text-lg font-bold pt-1 items-center text-center justify-center">
-            <Link href="/men" className="hover:underline cursor-pointer">
+            <Link
+              href="/category/men"
+              className="hover:underline cursor-pointer"
+            >
               Men
             </Link>
-            <Link href="/women" className="hover:underline cursor-pointer">
+            <Link
+              href="/category/women"
+              className="hover:underline cursor-pointer"
+            >
               Women
             </Link>
-            <Link href="/kids" className="hover:underline cursor-pointer">
+            <Link
+              href="/category/kids"
+              className="hover:underline cursor-pointer"
+            >
               Kids
             </Link>
           </div>
@@ -50,13 +59,22 @@ const Navbar = () => {
           </div>
 
           <div className="flex gap-10 pt-5 text-lg font-semibold justify-center">
-            <Link href="/men" className="hover:underline cursor-pointer">
+            <Link
+              href="/category/men"
+              className="hover:underline cursor-pointer"
+            >
               Men
             </Link>
-            <Link href="/women" className="hover:underline cursor-pointer">
+            <Link
+              href="/category/women"
+              className="hover:underline cursor-pointer"
+            >
               Women
             </Link>
-            <Link href="/kids" className="hover:underline cursor-pointer">
+            <Link
+              href="/category/kids"
+              className="hover:underline cursor-pointer"
+            >
               Kids
             </Link>
           </div>

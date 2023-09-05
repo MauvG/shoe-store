@@ -6,15 +6,29 @@ import { useEffect, useState } from "react";
 
 const CartShoeCard = ({ shoe }) => {
   const [sizes, setSizes] = useState([]);
-  const [dropwdown, setDrowdown] = useState(false);
   const [drowdownClass, setDropdownClass] = useState(
     "hidden absolute border bg-white ml-[4.5rem] z-10"
   );
 
   const removeShoe = async () => {
-    const id = shoe.id;
-    await fetch(`http://127.0.0.1:8090/api/collections/cart/records/${id}`, {
+    await fetch(`/api/cart/${shoe._id}`, {
       method: "DELETE",
+    });
+
+    reload();
+  };
+
+  const handleSizeChange = async (event) => {
+    let size = event.target.innerHTML;
+    if (size == shoe.size) {
+      return;
+    }
+
+    await fetch(`/api/cart/${shoe._id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        size,
+      }),
     });
 
     reload();
@@ -23,7 +37,7 @@ const CartShoeCard = ({ shoe }) => {
   const reload = () => {
     let timer = setTimeout(() => {
       window.location.reload();
-    }, 100);
+    }, 10);
 
     return () => {
       clearTimeout(timer);
@@ -55,26 +69,6 @@ const CartShoeCard = ({ shoe }) => {
 
   const hideDropdown = () => {
     setDropdownClass("hidden absolute border bg-white ml-[4.5rem] z-10");
-  };
-
-  const handleSizeChange = async (event) => {
-    let size = event.target.innerHTML;
-    if (size == shoe.size) {
-      return;
-    }
-
-    const id = shoe.id;
-    await fetch(`http://127.0.0.1:8090/api/collections/cart/records/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        size,
-      }),
-    });
-
-    reload();
   };
 
   return (

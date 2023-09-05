@@ -4,11 +4,8 @@ import { ArrowLeft, ArrowRight, Done } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { revalidatePath } from "next/cache";
 
 const ShoePage = ({ shoe }) => {
-  const router = useRouter();
   const [src, setSrc] = useState("/" + shoe.name + "/main.png");
   const [sizeChosen, setSizeChosen] = useState(0);
   const [sizes, setSizes] = useState([]);
@@ -87,26 +84,15 @@ const ShoePage = ({ shoe }) => {
   };
 
   const addToCart = async () => {
-    const name = shoe.name;
-    const price = shoe.price;
-    const size = sizeChosen;
-    const quantity = 1;
-    const category = shoe.category;
-
-    await fetch("http://127.0.0.1:8090/api/collections/cart/records", {
+    await fetch("/api/cart/add", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({
-        name,
-        price,
-        size,
-        quantity,
-        category,
+        name: shoe.name,
+        category: shoe.category,
+        price: shoe.price,
+        size: sizeChosen,
       }),
     });
-    router.refresh();
   };
 
   const closePopup = () => {
