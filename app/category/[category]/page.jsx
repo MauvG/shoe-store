@@ -3,6 +3,8 @@
 import ErrorPage from "@/components/ErrorPage";
 import Category from "@/components/Category";
 import { useEffect, useState } from "react";
+import Footer from "@/components/Footer";
+import Loading from "@/components/Loading";
 
 const page = ({ params }) => {
   const [data, setData] = useState(null);
@@ -30,10 +32,15 @@ const page = ({ params }) => {
       });
   }, []);
 
-  if (isLoading) return <p></p>;
+  if (isLoading) return <Loading />;
   if (!data) return <ErrorPage />;
 
-  return <Category shoes={data} category={category} />;
+  return (
+    <div>
+      <Category shoes={data} category={category} />
+      <Footer />
+    </div>
+  );
 };
 
 export default page;

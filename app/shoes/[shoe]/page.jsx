@@ -1,6 +1,8 @@
 "use client";
 
 import ErrorPage from "@/components/ErrorPage";
+import Footer from "@/components/Footer";
+import Loading from "@/components/Loading";
 import ShoePage from "@/components/ShoePage";
 import { useEffect, useState } from "react";
 
@@ -21,10 +23,15 @@ const page = ({ params }) => {
       });
   }, []);
 
-  if (isLoading) return <p></p>;
+  if (isLoading) return <Loading />;
   if (!data) return <ErrorPage />;
 
-  return <ShoePage shoe={data} />;
+  return (
+    <div>
+      <ShoePage shoe={data} />
+      <Footer />
+    </div>
+  );
 };
 
 export default page;

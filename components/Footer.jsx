@@ -15,13 +15,13 @@ const Footer = () => {
               <Link href="/" className="hover:text-white">
                 Home
               </Link>
-              <Link href="/men" className="hover:text-white">
+              <Link href="/category/men" className="hover:text-white">
                 Men
               </Link>
-              <Link href="/women" className="hover:text-white">
+              <Link href="/category/women" className="hover:text-white">
                 Women
               </Link>
-              <Link href="/kids" className="hover:text-white">
+              <Link href="/category/kids" className="hover:text-white">
                 Kids
               </Link>
             </div>
@@ -100,13 +100,13 @@ const Footer = () => {
               <Link href="/" className="hover:text-white">
                 Home
               </Link>
-              <Link href="/men" className="hover:text-white">
+              <Link href="/category/men" className="hover:text-white">
                 Men
               </Link>
-              <Link href="/women" className="hover:text-white">
+              <Link href="/category/women" className="hover:text-white">
                 Women
               </Link>
-              <Link href="/kids" className="hover:text-white">
+              <Link href="/category/kids" className="hover:text-white">
                 Kids
               </Link>
             </div>

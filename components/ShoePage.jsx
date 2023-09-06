@@ -135,7 +135,7 @@ const ShoePage = ({ shoe }) => {
                   onMouseEnter={pictureShoe}
                 />
               </div>
-              <div>
+              <div className="ml-2 mr-2">
                 <Image
                   src={src}
                   alt={shoe.name}
@@ -265,7 +265,7 @@ const ShoePage = ({ shoe }) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="w-full">
+            <div className="ml-4 mr-4">
               <Image
                 src={src}
                 alt={shoe.name}
@@ -398,7 +398,7 @@ const ShoePage = ({ shoe }) => {
       </div>
 
       {/* Mobile */}
-      <div className="sm:hidden block">
+      <div className="sm:hidden block mr-2 ml-2">
         <div className="mt-10 flex flex-col justify-center items-center">
           <div className="text-center flex flex-col gap-2">
             <h1 className="text-4xl font-bold">{shoe.name}</h1>
@@ -411,7 +411,7 @@ const ShoePage = ({ shoe }) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="w-full ml-1 mr-1 justify-center items-center text-center">
+            <div className="w-full justify-center items-center text-center">
               <Image
                 src={src}
                 alt={shoe.name}

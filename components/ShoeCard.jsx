@@ -20,8 +20,8 @@ const ShoeCard = ({ id, name, price }) => {
       <Image
         src={img}
         alt={name + " main"}
-        width={500}
-        height={500}
+        width={400}
+        height={400}
         loading="eager"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

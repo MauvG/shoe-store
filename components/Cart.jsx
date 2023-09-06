@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import CartShoeCard from "./CartShoeCard";
 import Checkout from "./Checkout";
+import Footer from "./Footer";
+import Loading from "./Loading";
 
 const Cart = () => {
   const [data, setData] = useState(null);
@@ -17,7 +19,7 @@ const Cart = () => {
       });
   }, []);
 
-  if (isLoading) return <p></p>;
+  if (isLoading) return <Loading />;
   if (!data) return <p>No data</p>;
 
   let total = 0;
@@ -98,6 +100,7 @@ const Cart = () => {
           <Checkout total={total} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

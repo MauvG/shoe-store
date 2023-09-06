@@ -2,10 +2,10 @@ import ShoeCard from "./ShoeCard";
 
 const Category = ({ shoes, category }) => {
   return (
-    <div>
+    <div className="">
       {/* Dekstop */}
       <div className="hidden sm:block">
-        <div className="m-10 text-xl font-bold flex">
+        <div className="m-12 mb-0 text-xl font-bold flex">
           <div className="flex-1">
             {category === "men" ? <h1>Men's Shoes</h1> : <></>}
             {category === "women" ? <h1>Women's Shoes</h1> : <></>}
@@ -13,10 +13,10 @@ const Category = ({ shoes, category }) => {
           </div>
         </div>
 
-        <div className="m-10 flex gap-4 justify-center">
+        <div className="m-10 flex items-center justify-center">
           {shoes.map((shoe) =>
             shoe.category === category ? (
-              <div key={shoe._id} className="">
+              <div key={shoe._id} className="m-2">
                 <ShoeCard id={shoe._id} name={shoe.name} price={shoe.price} />
               </div>
             ) : (
@@ -36,10 +36,10 @@ const Category = ({ shoes, category }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap items-center justify-center">
           {shoes.map((shoe) =>
             shoe.category === category ? (
-              <div key={shoe._id} className="basis-44">
+              <div key={shoe._id} className="basis-44 m-1">
                 <ShoeCard id={shoe._id} name={shoe.name} price={shoe.price} />
               </div>
             ) : (
