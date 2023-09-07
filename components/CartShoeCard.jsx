@@ -4,10 +4,8 @@ import { DeleteOutlineOutlined, KeyboardArrowDown } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 const CartShoeCard = ({ shoe }) => {
-  const router = useRouter();
   const [sizes, setSizes] = useState([]);
   const [drowdownClass, setDropdownClass] = useState(
     "hidden absolute border bg-white ml-[4.5rem] z-10"
@@ -16,10 +14,9 @@ const CartShoeCard = ({ shoe }) => {
   const removeShoe = async () => {
     await fetch(`/api/cart/${shoe._id}`, {
       method: "DELETE",
-      next: { revalidate: 10 },
     });
 
-    router.refresh();
+    reload();
   };
 
   const handleSizeChange = async (event) => {
@@ -33,10 +30,9 @@ const CartShoeCard = ({ shoe }) => {
       body: JSON.stringify({
         size,
       }),
-      next: { revalidate: 10 },
     });
 
-    router.refresh();
+    reload();
   };
 
   const reload = () => {
