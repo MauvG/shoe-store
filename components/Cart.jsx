@@ -5,21 +5,22 @@ import CartShoeCard from "./CartShoeCard";
 import Checkout from "./Checkout";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import { getServerSideProps } from "@/app/cart/page";
 
 const Cart = () => {
   const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getData = async () => {
-      const serverData = await getServerSideProps();
-      setData(serverData);
-    };
-
-    getData();
+    fetch("https://mg-footwear.vercel.app/api/cart")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
   }, []);
 
-  if (!data) return <Loading />;
+  if (isLoading) return <Loading />;
+  if (!data) return <p>No data</p>;
 
   let total = 0;
   for (let i = 0; i < data.length; i++) {
