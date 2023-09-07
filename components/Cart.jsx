@@ -5,22 +5,21 @@ import CartShoeCard from "./CartShoeCard";
 import Checkout from "./Checkout";
 import Footer from "./Footer";
 import Loading from "./Loading";
+import { getServerSideProps } from "@/app/cart/page";
 
 const Cart = () => {
-  const [data, setData] = useState(null); 
-  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/api/cart", { method: "GET" })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
+    const getData = async () => {
+      const serverData = await getServerSideProps();
+      setData(serverData);
+    };
+
+    getData();
   }, []);
 
-  if (isLoading) return <Loading />;
-  if (!data) return <p>No data</p>;
+  if (!data) return <Loading />;
 
   let total = 0;
   for (let i = 0; i < data.length; i++) {

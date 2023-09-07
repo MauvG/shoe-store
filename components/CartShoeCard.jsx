@@ -2,10 +2,12 @@
 
 import { DeleteOutlineOutlined, KeyboardArrowDown } from "@mui/icons-material";
 import Image from "next/image";
-import Link from "next/link";
+
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const CartShoeCard = ({ shoe }) => {
+  const router = useRouter();
   const [sizes, setSizes] = useState([]);
   const [drowdownClass, setDropdownClass] = useState(
     "hidden absolute border bg-white ml-[4.5rem] z-10"
@@ -16,7 +18,7 @@ const CartShoeCard = ({ shoe }) => {
       method: "DELETE",
     });
 
-    reload();
+    window.location.reload();
   };
 
   const handleSizeChange = async (event) => {
@@ -32,17 +34,7 @@ const CartShoeCard = ({ shoe }) => {
       }),
     });
 
-    reload();
-  };
-
-  const reload = () => {
-    let timer = setTimeout(() => {
-      window.location.reload();
-    }, 10);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    window.location.reload();
   };
 
   const initSizes = () => {
@@ -82,6 +74,7 @@ const CartShoeCard = ({ shoe }) => {
           height={150}
           loading="eager"
           className="h-[150px] object-cover"
+          priority
         />
       </div>
       <div className="ml-10 flex flex-col gap-1">
