@@ -5,17 +5,20 @@ import CartShoeCard from "./CartShoeCard";
 import Checkout from "./Checkout";
 import Footer from "./Footer";
 import Loading from "./Loading";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-    fetch("/api/cart")
+    fetch("/api/cart", { method: "GET", next: { revalidate: 10 } })
       .then((res) => res.json())
       .then((data) => {
         setData(data);
         setLoading(false);
+        router.refresh();
       });
   }, []);
 
