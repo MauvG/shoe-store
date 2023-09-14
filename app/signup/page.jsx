@@ -16,14 +16,13 @@ const page = () => {
       setPasswordShow("show");
     }
   };
-
   return (
     <div className="mt-20">
       <form
         action="/"
         className="flex flex-col gap-5 justify-center sm:w-[60vh] w-[90vw] m-auto border-2 shadow-lg p-10 rounded-2xl"
       >
-        <h1 className="font-bold text-2xl">Sign in</h1>
+        <h1 className="font-bold text-2xl">Sign up</h1>
         <input
           placeholder="Username"
           className="border-2 border-zinc-500 rounded-md p-2 outline-none"
@@ -43,12 +42,12 @@ const page = () => {
           </p>
         </div>
 
-        <Link
-          href="forgotpassword"
-          className="hover:underline underline-offset-4 text-cyan-600 font-bold"
-        >
-          Forgot password?
-        </Link>
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          className="border-2 border-zinc-500 rounded-md p-2 outline-none"
+        />
+
         <input
           type="submit"
           value="Sign in"
@@ -57,12 +56,12 @@ const page = () => {
       </form>
 
       <div className="flex font-medium gap-2 justify-center m-5">
-        <h1>Dont have an accout?</h1>
+        <h1>Already have an account?</h1>
         <Link
-          href="/signup"
+          href="/signin"
           className="hover:underline underline-offset-4 text-cyan-600"
         >
-          Sign up
+          Sign in
         </Link>
       </div>
     </div>
