@@ -11,7 +11,7 @@ const Cart = () => {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://mg-footwear.vercel.app/api/cart")
+    fetch("/api/cart")
       .then((res) => res.json())
       .then((data) => {
         setData(data);

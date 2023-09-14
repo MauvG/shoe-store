@@ -10,7 +10,7 @@ const Navbar = () => {
           <div className="flex-1 flex items-center">
             <Link
               href="/"
-              className="text-3xl font-bold cursor-pointer hover:underline"
+              className="text-3xl font-bold cursor-pointer hover:scale-110"
             >
               MG Footwear
             </Link>
@@ -37,8 +37,14 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex-1 flex items-center justify-end">
-            <Link href="/cart">
+          <div className="flex-1 flex gap-4 items-center justify-end">
+            <Link href="/signin" className="hover:underline underline-offset-4">
+              Sign in
+            </Link>
+            <Link href="/signup" className="hover:underline underline-offset-4">
+              Sign up
+            </Link>
+            <Link href="/cart" className="hover:scale-110">
               <ShoppingCartOutlined
                 fontSize="large"
                 className="cursor-pointer"

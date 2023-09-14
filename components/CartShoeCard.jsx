@@ -12,7 +12,7 @@ const CartShoeCard = ({ shoe }) => {
   );
 
   const removeShoe = async () => {
-    await fetch(`https://mg-footwear.vercel.app/api/cart/${shoe._id}`, {
+    await fetch(`/api/cart/${shoe._id}`, {
       method: "DELETE",
     });
 
@@ -25,7 +25,7 @@ const CartShoeCard = ({ shoe }) => {
       return;
     }
 
-    await fetch(`https://mg-footwear.vercel.app/api/cart/${shoe._id}`, {
+    await fetch(`/api/cart/${shoe._id}`, {
       method: "PATCH",
       body: JSON.stringify({
         size,
