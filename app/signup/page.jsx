@@ -1,11 +1,37 @@
 "use client";
 
+import Loading from "@/components/Loading";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const page = () => {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordShow, setPasswordShow] = useState("show");
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+
+  const [usersData, setUsersData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/users");
+      const data = await response.json();
+      setUsersData(data);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) return <Loading />;
+  if (!usersData) return;
 
   const handlePasswordType = () => {
     if (passwordType === "password") {
@@ -16,43 +42,107 @@ const page = () => {
       setPasswordShow("show");
     }
   };
+
+  const handleSubmit = async () => {
+    setUsernameError(false);
+    setPasswordError(false);
+    setConfirmPasswordError(false);
+
+    if (username === "") {
+      setUsernameError(true);
+      return;
+    } else if (password === "") {
+      setPasswordError(true);
+      return;
+    } else if (password !== confirmPassword) {
+      setConfirmPasswordError(true);
+      return;
+    } else {
+      for (let i = 0; i < usersData.length; i++) {
+        if (username === usersData[i].username) {
+          setUsernameError(true);
+          return;
+        }
+      }
+
+      await fetch("/api/users/new", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+    }
+  };
+
   return (
     <div className="mt-20">
-      <form
-        action="/"
-        className="flex flex-col gap-5 justify-center sm:w-[60vh] w-[90vw] m-auto border-2 shadow-lg p-10 rounded-2xl"
-      >
+      <form className="flex flex-col gap-5 justify-center sm:w-[60vh] w-[90vw] m-auto border-2 shadow-lg p-10 rounded-2xl">
         <h1 className="font-bold text-2xl">Sign up</h1>
-        <input
-          placeholder="Username"
-          className="border-2 border-zinc-500 rounded-md p-2 outline-none"
-        />
 
-        <div className="flex justify-between border-2 p-2 border-zinc-500 rounded-md">
+        <div>
           <input
-            placeholder="Password"
-            type={passwordType}
-            className="w-full outline-none"
+            placeholder="Username"
+            className={`${
+              usernameError === true ? "border-red-500" : "border-zinc-500"
+            } border-2 rounded-md p-2 outline-none w-full`}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
           />
-          <p
-            onClick={handlePasswordType}
-            className="hover:underline underline-offset-4 pr-2"
-          >
-            {passwordShow}
-          </p>
+          {usernameError === true ? (
+            <p className="text-red-500">Username not available!</p>
+          ) : (
+            <></>
+          )}
         </div>
 
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          className="border-2 border-zinc-500 rounded-md p-2 outline-none"
-        />
+        <div>
+          <div className="flex justify-between border-2 p-2 border-zinc-500 rounded-md">
+            <input
+              placeholder="Password"
+              type={passwordType}
+              className="w-full outline-none"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <p
+              onClick={handlePasswordType}
+              className="hover:underline underline-offset-4 pr-2"
+            >
+              {passwordShow}
+            </p>
+          </div>
+          {passwordError === true ? (
+            <p className="text-red-500">Password required!</p>
+          ) : (
+            <></>
+          )}
+        </div>
 
-        <input
-          type="submit"
-          value="Sign in"
-          className="bg-zinc-800 text-white rounded-full shadow-lg w-full p-4 hover:bg-zinc-600"
-        />
+        <div>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="border-2 border-zinc-500 rounded-md p-2 outline-none w-full"
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
+          />
+          {confirmPasswordError === true ? (
+            <p className="text-red-500">Passwords do not match!</p>
+          ) : (
+            <></>
+          )}
+        </div>
+
+        <button
+          onClick={handleSubmit}
+          className="text-center bg-zinc-800 text-white rounded-full shadow-lg w-full p-4 hover:bg-zinc-600"
+        >
+          Sign up
+        </button>
       </form>
 
       <div className="flex font-medium gap-2 justify-center m-5">

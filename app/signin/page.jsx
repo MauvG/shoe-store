@@ -19,10 +19,7 @@ const page = () => {
 
   return (
     <div className="mt-20">
-      <form
-        action="/"
-        className="flex flex-col gap-5 justify-center sm:w-[60vh] w-[90vw] m-auto border-2 shadow-lg p-10 rounded-2xl"
-      >
+      <form className="flex flex-col gap-5 justify-center sm:w-[60vh] w-[90vw] m-auto border-2 shadow-lg p-10 rounded-2xl">
         <h1 className="font-bold text-2xl">Sign in</h1>
         <input
           placeholder="Username"
@@ -49,11 +46,13 @@ const page = () => {
         >
           Forgot password?
         </Link>
-        <input
-          type="submit"
-          value="Sign in"
+
+        <button
+          // onClick={}
           className="bg-zinc-800 text-white rounded-full shadow-lg w-full p-4 hover:bg-zinc-600"
-        />
+        >
+          Sign in
+        </button>
       </form>
 
       <div className="flex font-medium gap-2 justify-center m-5">
