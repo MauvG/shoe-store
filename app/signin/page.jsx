@@ -47,7 +47,7 @@ const page = () => {
         return;
       }
 
-      router.replace("/user");
+      router.replace("user");
     } catch (error) {
       console.log("Could not sign in!", error);
     }

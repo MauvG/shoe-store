@@ -22,7 +22,7 @@ const authOptions = {
           const passwordsMatch = await bcrypt.compare(password, user.password);
 
           if (!passwordsMatch) return null;
- 
+
           return user;
         } catch (error) {
           console.log("Unable to login", error);
@@ -37,6 +37,18 @@ const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/signin",
+  },
+  callbacks: {
+    async session({ session, token }) {
+      session.user = token.user;
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user;
+      }
+      return token;
+    },
   },
 };
 
