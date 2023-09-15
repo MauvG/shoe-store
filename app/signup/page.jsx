@@ -1,8 +1,7 @@
 "use client";
 
-import Loading from "@/components/Loading";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const page = () => {
   const [passwordType, setPasswordType] = useState("password");
@@ -16,23 +15,6 @@ const page = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
-  const [usersData, setUsersData] = useState(null);
-  const [isLoading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("/api/users");
-      const data = await response.json();
-      setUsersData(data);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  if (isLoading) return <Loading />;
-  if (!usersData) return;
-
   const handlePasswordType = () => {
     if (passwordType === "password") {
       setPasswordType("text");
@@ -43,7 +25,9 @@ const page = () => {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     setUsernameError(false);
     setPasswordError(false);
     setConfirmPasswordError(false);
@@ -57,27 +41,48 @@ const page = () => {
     } else if (password !== confirmPassword) {
       setConfirmPasswordError(true);
       return;
-    } else {
-      for (let i = 0; i < usersData.length; i++) {
-        if (username === usersData[i].username) {
-          setUsernameError(true);
-          return;
-        }
+    }
+
+    try {
+      const resExistingUser = await fetch("/api/users/exists", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username,
+        }),
+      });
+
+      const existingUser = await resExistingUser.json();
+
+      console.log(existingUser);
+
+      if (existingUser) {
+        setUsernameError(true);
+        return;
       }
 
-      await fetch("/api/users/new", {
+      const res = await fetch("/api/users/new", {
         method: "POST",
         body: JSON.stringify({
           username: username,
           password: password,
         }),
       });
+
+      if (res.ok) {
+        const form = document.getElementById("signupForm");
+        form.reset();
+      }
+    } catch (error) {
+      console.log("Could not create new user!", error);
     }
   };
 
   return (
     <div className="mt-20">
-      <form className="flex flex-col gap-5 justify-center sm:w-[60vh] w-[90vw] m-auto border-2 shadow-lg p-10 rounded-2xl">
+      <form
+        id="signupForm"
+        className="flex flex-col gap-5 justify-center sm:w-[60vh] w-[90vw] m-auto border-2 shadow-lg p-10 rounded-2xl"
+      >
         <h1 className="font-bold text-2xl">Sign up</h1>
 
         <div>
