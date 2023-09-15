@@ -6,8 +6,6 @@ import { useSession } from "next-auth/react";
 const page = () => {
   const { data: session } = useSession();
 
-  console.log(session);
-
   return (
     <div className="items-center text-center m-20">
       <h1>

@@ -1,7 +1,14 @@
+"use client";
+
 import { ShoppingCartOutlined } from "@mui/icons-material";
 import Link from "next/link";
 
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 const Navbar = () => {
+  const { data: session } = useSession();
+
   return (
     <div>
       <nav className="p-5 tracking-wider">
@@ -38,12 +45,35 @@ const Navbar = () => {
           </div>
 
           <div className="flex-1 flex gap-4 items-center justify-end">
-            <Link href="/signin" className="hover:underline underline-offset-4">
-              Sign in
-            </Link>
-            <Link href="/signup" className="hover:underline underline-offset-4">
-              Sign up
-            </Link>
+            {session?.user ? (
+              <div className="flex gap-4">
+                <h1 className="bg-cyan-600 text-white font-bold rounded-full pl-4 pr-4 p-1">
+                  {session?.user?.username}
+                </h1>
+                <button
+                  onClick={() => signOut()}
+                  className="hover:underline underline-offset-4"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <div className="flex gap-4">
+                <Link
+                  href="/signin"
+                  className="hover:underline underline-offset-4"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/signup"
+                  className="hover:underline underline-offset-4"
+                >
+                  Sign up
+                </Link>
+              </div>
+            )}
+
             <Link href="/cart" className="hover:scale-110">
               <ShoppingCartOutlined
                 fontSize="large"
@@ -92,6 +122,37 @@ const Navbar = () => {
                 className="cursor-pointer"
               />
             </Link>
+          </div>
+
+          <div className="flex m-4 gap-4 justify-center">
+            {session?.user ? (
+              <div className="flex gap-4">
+                <h1 className="bg-cyan-600 text-white font-bold rounded-full pl-4 pr-4 p-1">
+                  {session?.user?.username}
+                </h1>
+                <button
+                  onClick={() => signOut()}
+                  className="hover:underline underline-offset-4"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <div className="flex gap-4">
+                <Link
+                  href="/signin"
+                  className="hover:underline underline-offset-4"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/signup"
+                  className="hover:underline underline-offset-4"
+                >
+                  Sign up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </nav>

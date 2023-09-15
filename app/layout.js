@@ -21,8 +21,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <div className="min-h-screen flex flex-col text-zinc-800">
-          <Navbar />
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <Navbar />
+            {children}
+          </AuthProvider>
         </div>
       </body>
     </html>
