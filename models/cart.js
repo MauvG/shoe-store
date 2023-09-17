@@ -1,6 +1,7 @@
 import { Schema, model, models } from "mongoose";
 
 const cartSchema = new Schema({
+  user: String,
   name: String,
   category: String,
   price: Number,

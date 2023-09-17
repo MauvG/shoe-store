@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const SignUpForm = async () => {
+const SignUpForm = () => {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordShow, setPasswordShow] = useState("show");
 

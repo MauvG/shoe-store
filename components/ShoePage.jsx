@@ -1,11 +1,15 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, Done } from "@mui/icons-material";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ShoePage = ({ shoe }) => {
+  const { data: session } = useSession();
+
   const [src, setSrc] = useState("/" + shoe.name + "/main.png");
   const [sizeChosen, setSizeChosen] = useState(0);
   const [sizes, setSizes] = useState([]);
@@ -84,9 +88,13 @@ const ShoePage = ({ shoe }) => {
   };
 
   const addToCart = async () => {
+    if (!session) redirect("/signin");
+    console.log(session.user._id);
+
     await fetch("/api/cart/add", {
       method: "POST",
       body: JSON.stringify({
+        user: session?.user._id,
         name: shoe.name,
         category: shoe.category,
         price: shoe.price,

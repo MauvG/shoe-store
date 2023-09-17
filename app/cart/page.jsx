@@ -1,6 +1,6 @@
 import Cart from "@/components/Cart";
 
-const page = async () => {
+const page = () => {
   return <Cart />;
 };
 
